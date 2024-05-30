@@ -5,6 +5,7 @@ spec:
   containers:
   - name: jnlp
     env:
+    image: jenkins/jnlp-slave:alpine
     - name: CONTAINER_ENV_VAR
       value: jnlp
     securityContext:
