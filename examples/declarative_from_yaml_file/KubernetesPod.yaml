@@ -7,6 +7,14 @@ spec:
     env:
     - name: CONTAINER_ENV_VAR
       value: jnlp
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
+      runAsNonRoot: true
+      runAsUser: 2000
+      seccompProfile:
+        type: RuntimeDefault
   - name: maven
     image: maven:3.8.1-jdk-8
     command:
@@ -16,6 +24,14 @@ spec:
     env:
     - name: CONTAINER_ENV_VAR
       value: maven
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
+      runAsNonRoot: true
+      runAsUser: 2000
+      seccompProfile:
+        type: RuntimeDefault
   - name: busybox
     image: busybox
     command:
@@ -23,4 +39,12 @@ spec:
     tty: true
     env:
     - name: CONTAINER_ENV_VAR
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
+      runAsNonRoot: true
+      runAsUser: 2000
+      seccompProfile:
+        type: RuntimeDefault
       value: busybox
